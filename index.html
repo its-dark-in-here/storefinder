@@ -15,13 +15,27 @@
       margin: 0;
       padding: 0;
     }
+    div.header, div.footer {
+      height: 10%;
+      border: 1px solid gray;
+      font-family: 'Arial';
+      padding: 1em;
+      color: white;
+      background-color: #599E59;
+      clear: left;
+      text-align: center;
+    }
  </style>
   </head>
   <body style="margin:0px; padding:0px;" onload="initMap()">
+    <div class="header">
+      <h1>Peckish Rice Crackers  -  Store Finder</h1>
+    </div>
     <div>
+        <center>
         <input type="hidden" id="prodType" value="brand"/>
         <input type="hidden" id="prodValue" value="Peckish"/>
-		<input type="hidden" id="countryRestrict" value="GB"/>
+	<input type="hidden" id="countryRestrict" value="GB"/>
         <label for="addressInput">Search location:</label>
         <input type="text" id="addressInput" size="15"/>
         <label for="radiusSelect">Radius:</label>
@@ -32,9 +46,14 @@
           <option value="10">10 miles</option>
         </select>
         <input type="button" id="searchButton" value="Search"/>
+    </center>
     </div>
-    <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
-    <div id="map" style="width: 100%; height: 90%"></div>
+    <div>
+      <center>
+      <select id="locationSelect" style="width: 25%; visibility: hidden"></select>
+      </center>
+    </div>
+    <div id="map" style="width: 100%; height: 80%"></div>
     <script>
       var map;
       var markers = [];
@@ -175,8 +194,13 @@
 
        function doNothing() {}
   </script>
-    <script async defer 
-    src="https://maps.googleapis.com/maps/api/js?key=REPLACE_WITH_API_KEY&callback=initMap">
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYm8t0T5IvpOxLJ8JuXRZoBPplliOeWUk&callback=initMap">
     </script>
+    <div class="footer">
+Information provided is accurate to the best of our abilities.<br />
+Product availability is ultimately the decision of each retailer.<br /><br />
+Copyright &copy; 2018 Premier Foods Group Limited
+    </div>
   </body>
 </html>

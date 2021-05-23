@@ -35,12 +35,18 @@ if (!$mysqli = new mysqli($hostname, $username, $password, $database))
 //$query = "SELECT uniqueid, storename, storeaddress1, latitude, longitude, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM retailerlocations HAVING distance < ? ORDER BY distance LIMIT 0 , 20;";
 
 // $query = "SELECT uniqueid, retailername, Replace(concat('<B>',StoreName,'</B><BR>',StoreAddress1,'<BR>',StoreAddress2,'<BR>',StoreTown,'<BR>',StorePostCode),'<BR><BR>','<BR>') AS storeaddress1, latitude, longitude, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance FROM retailerlocations WHERE EXISTS (SELECT 1 FROM productlistings WHERE retailerlocations.retailerstorenumber =  productlistings.retailerstorenumber AND retailerlocations.retailername = productlistings.retailername AND productlistings.BrandRange=?) HAVING distance < ? ORDER BY distance LIMIT 0 , 20;";
+// printf("Center_Lat: %s\n", $center_lat); 
+// printf("Center_Lng: %s\n", $center_lng);
+// printf("Radius: %s\n", $radius);
+// printf("ProdType: %s\n", $prodtype);
+// printf("ProdValue: %s\n", $prodvalue);
+// printf("END: %s\n", "XXXX");
 
 $query = "SELECT uniqueid, concat(retailername,' - ',StoreName) AS retailername, Replace(concat('<B>',StoreAddress1,'<BR>',StoreAddress2,'<BR>',StoreTown,'<BR>',StorePostCode),'<BR><BR>','<BR>') AS storeaddress1, ";
 $query = $query . " latitude, longitude, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance ";
 $query = $query . " FROM retailerlocations ";
 $query = $query . " WHERE EXISTS (SELECT 1 FROM productlistings WHERE retailerlocations.retailerstorenumber = productlistings.retailerstorenumber";
-$query = $query . " AND retailerlocations.retailername = productlistings.retailername AND productlistings.Brand=? AND productlistings.validityindicator='Y')";
+$query = $query . " AND retailerlocations.retailername = productlistings.retailername AND productlistings.brandrange=? AND productlistings.validityindicator='Y')";
 $query = $query . " HAVING distance < ? ORDER BY distance LIMIT 0 , 20;";
 
 $stmt = $mysqli->prepare($query);
@@ -107,7 +113,7 @@ if ($result->num_rows >= "1") {
 
 }
 else {
-  printf("Errormessage: %s\n", $mysqli->error);
+  printf("Errormessage: %s %s\n", $mysqli->error, $result->num_rows);
 }
 $mysqli->close();
 

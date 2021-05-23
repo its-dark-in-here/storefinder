@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Neucha');
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: calc(100% - 1px - 3em - 1px - 1em - 1em - 1.5em - 1.5em - 1px - 3em - 1px - 1em - 1em);
+	  width: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+	.header {
+	  border: 1px solid gray;
+      height: 3em;
+	  width: 100%;
+	  z-index: 1;
+	  display: table;
+	  background-color: #229CB6;
+	  clear: left;
+	  position: relative;
+	}
+	.header .logo {
+	  display: table-cell;
+	  vertical-align: middle;
+      width: 10%;
+      min-width: 100px;
+	  padding-left: 50px;
+	}
+	.header .title {
+      font-family: 'Neucha';
+      font-size: 1em;
+      padding: 1em;
+      margin: auto;
+      color: white;
+ 
+      text-align: center;
+	  max-width: 60%;
+	}
+    h1 {
+      font-size: 2.5rem;
+      margin-block-start: 0rem;
+      margin-block-end: 0rem;
+	  display: inline-block;
+    }
+	img {
+	  display: block;
+	}
+	.selector {
+		height: 1.5em;
+		font-family: 'Neucha';
+		font-size: 1em;
+		color: black;
+	}
+	.results {
+		height: 1.5em;
+		font-family: 'Neucha';
+		font-size: 1em;
+		color: black;
+	}
+    .footer {
+      height: 3em;
+      border: 1px solid gray;
+      font-family: 'Neucha';
+      font-size: 1em;
+      padding: 1em;
+      margin: auto;
+      color: white;
+      background-color: #229CB6;
+      clear: left;
+      text-align: center;
+    }

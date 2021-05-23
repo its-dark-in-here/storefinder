@@ -40,7 +40,7 @@ $query = "SELECT uniqueid, concat(retailername,' - ',StoreName) AS retailername,
 $query = $query . " latitude, longitude, ( 3959 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance ";
 $query = $query . " FROM retailerlocations ";
 $query = $query . " WHERE EXISTS (SELECT 1 FROM productlistings WHERE retailerlocations.retailerstorenumber = productlistings.retailerstorenumber";
-$query = $query . " AND retailerlocations.retailername = productlistings.retailername AND productlistings.Brand=?)";
+$query = $query . " AND retailerlocations.retailername = productlistings.retailername AND productlistings.Brand=? AND productlistings.validityindicator='Y')";
 $query = $query . " HAVING distance < ? ORDER BY distance LIMIT 0 , 20;";
 
 $stmt = $mysqli->prepare($query);
